@@ -1,6 +1,6 @@
 class GuessingGame
 
-    attr_reader :game_over
+    attr_reader :num_attempts
 
     def initialize(min, max)
         @min = min
@@ -10,9 +10,30 @@ class GuessingGame
         @game_over = false
     end
 
-    def num_attempts
-        @num_attempts
+    # def num_attempts
+    #     @num_attempts
+    # end
+
+    def game_over?
+        @game_over
     end
 
+    def check_num(num)
+        @num_attempts += 1
+        if num == @secret_num
+            @game_over = true
+            p 'you win'
+        elsif num > @secret_num
+            p 'too big'
+        else
+            p 'too small'
+        end
+    end
+
+    def ask_user
+        p 'Enter a number'
+        number = gets.chomp.to_i
+        check_num(number)
+    end
 
 end
