@@ -15,6 +15,17 @@ class Room
         end
     end
 
-    
+    def available_space
+        capacity - occupants.length
+    end
+
+    def add_occupant(name)
+        if !full?
+            occupants << name
+            true
+        else
+            false
+        end
+    end
 
 end
